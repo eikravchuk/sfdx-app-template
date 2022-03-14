@@ -1,0 +1,41 @@
+<template>
+  <lightning-card class="slds-is-relative" title={labels.CardTitle}>
+    <div class="slds-p-horizontal_small">
+      content
+      <div if:true={currentUser}>{currentUser.name}</div>
+      <div>
+        <button onclick={openModalClickHandler}>Open Modal</button>
+        <button onclick={linkClickHandler}>Link test</button>
+      </div>
+
+      <div>
+        <c-rxjs-test-component></c-rxjs-test-component>
+      </div>
+
+      <lightning-spinner if:true={isLoading} variant="brand"></lightning-spinner>
+
+
+      <lightning-record-edit-form object-api-name="Contact">
+        <!--lightning-messages not needed here
+          since we’re displaying a toast with the error message -->
+        <!--<lightning-messages></lightning-messages>-->
+        <lightning-input-field field-name="FirstName"></lightning-input-field>
+        <lightning-input-field field-name="LastName"></lightning-input-field>
+        <lightning-input-field field-name="Email"></lightning-input-field>
+        <lightning-input-field field-name="Phone"></lightning-input-field>
+        <c-lightning-input-field-wrapper onfocus={focusFieldHandler} onblur={blurFieldHandler}>
+          <lightning-input-field field-name="ReportsToId" value="00309000006mAAtAAM"></lightning-input-field>
+        </c-lightning-input-field-wrapper>
+        <lightning-button type="submit" variant="brand" label="Create Contact"></lightning-button>
+      </lightning-record-edit-form>
+
+
+      <div>
+        <c-html-output value={htmlOutputValue}></c-html-output>
+      </div>
+
+    </div>
+
+
+  </lightning-card>
+</template>
